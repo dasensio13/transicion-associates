@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
 import org.transicion.portillo.persistence.model.Associate;
 
+@Repository
 public class AssociateRepository implements IRepository<Associate> {
 
 	List<Associate> associates = new ArrayList<>();
@@ -20,7 +22,7 @@ public class AssociateRepository implements IRepository<Associate> {
 		Associate existing = findById(associate.getId()).orElse(null);
 		if (existing == null) {
 			associates.add(associate);
-			return existing;
+			return associate;
 		} else {
 			associates.remove(existing);
 			Associate newAssociate = new Associate(existing);
