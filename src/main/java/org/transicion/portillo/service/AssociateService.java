@@ -6,16 +6,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.transicion.portillo.persistence.model.Associate;
-import org.transicion.portillo.persistence.repository.IRepository;
+import org.transicion.portillo.persistence.repository.AssociateRepository;
 
 @Service
 public class AssociateService implements IService<Associate> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AssociateService.class);
 
-	private final IRepository<Associate> repository;
+	private final AssociateRepository repository;
 
-	public AssociateService(IRepository<Associate> repository) {
+	public AssociateService(AssociateRepository repository) {
 		super();
 		this.repository = repository;
 	}

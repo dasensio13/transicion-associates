@@ -2,14 +2,19 @@ package org.transicion.portillo.persistence.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Associate {
 
+	@Id
 	private Long id;
 	private String name;
 	private String mail;
 	private LocalDate dateCreated;
 	private Boolean active;
-	
+
 	public Associate() {
 		super();
 	}
@@ -65,6 +70,12 @@ public class Associate {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+	@Override
+	public String toString() {
+		return "Associate [id=" + id + ", name=" + name + ", mail=" + mail + ", dateCreated=" + dateCreated
+				+ ", active=" + active + "]";
 	}
 
 }

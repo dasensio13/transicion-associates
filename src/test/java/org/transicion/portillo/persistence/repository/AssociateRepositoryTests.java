@@ -1,4 +1,4 @@
-package org.transicion.portillo.service;
+package org.transicion.portillo.persistence.repository;
 
 import java.time.LocalDate;
 
@@ -9,16 +9,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.transicion.portillo.persistence.model.Associate;
 
 @SpringBootTest
-class AssociateServiceTests {
+class AssociateRepositoryTests {
 
 	@Autowired
-	private IService<Associate> service;
+	private AssociateRepository repository;
 
 	@Test
 	void saveAssociate() {
 		Associate newAssociate = new Associate(1L, "test", "test@mail.com", LocalDate.now(), true);
-		Associate savedAssociate = service.save(newAssociate);
+		Associate savedAssociate = repository.save(newAssociate);
 		Assertions.assertNotNull(savedAssociate);
+	}
+
+	@Test
+	void findAssociate() {
+		Associate findAssociate = repository.findById(1234L).orElse(null);
+		Assertions.assertNull(findAssociate);
 	}
 
 }

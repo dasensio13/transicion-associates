@@ -1,34 +1,7 @@
 package org.transicion.portillo.persistence.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.transicion.portillo.persistence.model.Associate;
 
-@Repository
-public class AssociateRepository implements IRepository<Associate> {
-
-	List<Associate> associates = new ArrayList<>();
-
-	@Override
-	public Optional<Associate> findById(Long id) {
-		return associates.stream().filter(a -> a.getId().equals(id)).findFirst();
-	}
-
-	@Override
-	public Associate save(Associate associate) {
-		Associate existing = findById(associate.getId()).orElse(null);
-		if (existing == null) {
-			associates.add(associate);
-			return associate;
-		} else {
-			associates.remove(existing);
-			Associate newAssociate = new Associate(existing);
-			associates.add(newAssociate);
-			return newAssociate;
-		}
-	}
-
+public interface AssociateRepository extends JpaRepository<Associate, Long> {
 }
