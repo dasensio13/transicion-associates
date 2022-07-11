@@ -1,10 +1,12 @@
 package org.transicion.portillo.service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.transicion.portillo.persistence.model.Associate;
 import org.transicion.portillo.persistence.repository.AssociateRepository;
 
@@ -28,6 +30,9 @@ public class AssociateService implements IService<Associate> {
 	@Override
 	public Associate save(Associate associate) {
 		LOG.debug("save associate {}", associate);
+		if (ObjectUtils.isEmpty(associate.getId())) {
+			associate.setDateCreated(LocalDate.now());
+		}
 		return repository.save(associate);
 	}
 

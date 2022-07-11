@@ -16,7 +16,7 @@ class AssociateServiceTests {
 
 	@Test
 	void saveAssociate() {
-		Associate newAssociate = new Associate(1L, "test", "test@mail.com", LocalDate.now(), true);
+		Associate newAssociate = new Associate("test", "test@mail.com", LocalDate.now(), true);
 		Associate savedAssociate = service.save(newAssociate);
 		Assertions.assertNotNull(savedAssociate);
 	}

@@ -1,0 +1,1 @@
+--INSERT INTO Associate(id, name, mail, date_created, active) VALUES (1, 'test', 'test@mail.com', '2022-07-11', true);

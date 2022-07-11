@@ -3,12 +3,15 @@ package org.transicion.portillo.persistence.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Associate {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String mail;
@@ -19,9 +22,8 @@ public class Associate {
 		super();
 	}
 
-	public Associate(Long id, String name, String mail, LocalDate dateCreated, Boolean active) {
+	public Associate(String name, String mail, LocalDate dateCreated, Boolean active) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.mail = mail;
 		this.dateCreated = dateCreated;
@@ -29,7 +31,7 @@ public class Associate {
 	}
 
 	public Associate(Associate a) {
-		this(a.getId(), a.getName(), a.getMail(), a.getDateCreated(), a.getActive());
+		this(a.getName(), a.getMail(), a.getDateCreated(), a.getActive());
 	}
 
 	public Long getId() {
