@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.ThymeLeaf.org">
+<head>
+<title>Associates</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Mail</th>
+				<th>Active</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="associate : ${associates}">
+				<td th:text="${associate.id}"></td>
+				<td th:text="${associate.name}"></td>
+				<td th:text="${associate.mail}"></td>
+				<td th:text="${associate.active}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<a th:href="@{/associates-mvc/new}">New Associate</a>
+	</p>
+</body>
+</html>

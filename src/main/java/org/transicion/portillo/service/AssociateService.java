@@ -1,6 +1,7 @@
 package org.transicion.portillo.service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -25,6 +26,11 @@ public class AssociateService implements IService<Associate> {
 	@Override
 	public Optional<Associate> findById(Long id) {
 		return repository.findById(id);
+	}
+
+	@Override
+	public List<Associate> findAll() {
+		return repository.findAll();
 	}
 
 	@Override

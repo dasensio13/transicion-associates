@@ -1,8 +1,11 @@
 package org.transicion.portillo.web.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class AssociateDto {
 
 	private Long id;
+	@NotBlank(message = "Name is mandatory")
 	private String name;
 	private String mail;
 	private Boolean active;

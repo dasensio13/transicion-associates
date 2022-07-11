@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.ThymeLeaf.org">
+<head>
+<title>Add Associate</title>
+</head>
+<body>
+	<form method="POST" th:action="@{/associates-mvc}" th:object="${associate}">
+		<p>
+			<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		</p>
+		<p>
+			<label for="mail">Mail</label>
+			<input type="text" id="mail" th:field="*{mail}" />
+		</p>
+		<p>
+			<label for="Active">Active</label>
+			<input type="checkbox" id="active" th:field="*{active}" />
+		</p>
+		<input type="submit" value="Save Associate" />
+	</form>
+	<p>
+		<a th:href="@{/associates-mvc}">Associates</a>
+	</p>
+</body>
+</html>
