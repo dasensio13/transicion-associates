@@ -42,4 +42,9 @@ public class AssociateService implements IService<Associate> {
 		return repository.save(associate);
 	}
 
+	@Override
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+
 }
