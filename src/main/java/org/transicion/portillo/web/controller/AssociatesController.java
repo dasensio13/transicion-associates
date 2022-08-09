@@ -1,5 +1,10 @@
 package org.transicion.portillo.web.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +32,11 @@ public class AssociatesController {
 		this.service = service;
 	}
 
+	@GetMapping
+	public List<AssociateDto> findAll() {
+		return service.findAll().stream().map(this::toDto).collect(Collectors.toList());
+	}
+
 	@GetMapping(value = "/{id}")
 	public AssociateDto findOne(@PathVariable Long id) {
 		return service.findById(id).map(this::toDto)
@@ -35,7 +45,7 @@ public class AssociatesController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(@RequestBody AssociateDto associateDto) {
+	public void create(@RequestBody @Valid AssociateDto associateDto) {
 		service.save(toEntity(associateDto));
 	}
 
